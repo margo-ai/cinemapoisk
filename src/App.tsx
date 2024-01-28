@@ -1,13 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/app.scss';
+import Layout from './components/layout/Layout';
+import Header from './components/header/Header';
+import Logo from './components/logo/Logo';
 
 function App() {
-  type a = string;
-  const b: a = 'aaa';
-
-  console.log(b);
-  return <div className="App">Hello</div>;
+  return (
+    <div className="app">
+      <Layout>
+        <Header>
+          <Logo />
+        </Header>
+      </Layout>
+    </div>
+  );
 }
 
 export default App;
