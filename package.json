@@ -8,7 +8,8 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "jest src",
-    "lint": "eslint src --fix"
+    "lint": "eslint src --fix",
+    "generate-types": "graphql-codegen"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,6 +17,9 @@
     "@babel/preset-env": "^7.22.4",
     "@babel/preset-react": "^7.22.3",
     "@babel/preset-typescript": "^7.21.5",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.8",
@@ -54,6 +58,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.0",
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",

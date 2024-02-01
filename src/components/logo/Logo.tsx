@@ -11,7 +11,7 @@ const Logo = ({ size = 'medium' }: ILogoProps) => {
     <div className="logo">
       <div className="logo__inner">
         <img className={`logo__inner__img logo__inner__img--${size}`} src={LogoSvg} alt="logo" />
-        <div className="logo__inner__text">Cinemapoisk</div>
+        <div className="logo__inner__text">BookPoisk</div>
       </div>
     </div>
   );

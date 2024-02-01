@@ -1,57 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect } from 'react';
 
 import './list.scss';
 
-import { movies as moviesData } from 'src/api/movies';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import { GET_BOOKS } from '../../graphql/queries/getBooks';
+
+// import { movies as moviesData } from 'src/api/movies';
+// import { books as booksData } from 'src/api/books.mjs';
 
 import Card from '../card/Card';
+import { useInView } from 'react-intersection-observer';
 
 const List = () => {
-  console.log('List rendered');
   const { ref, inView } = useInView({
     threshold: 0,
     trackVisibility: true,
     delay: 800,
   });
 
-  const [movies, setMovies] = useState(moviesData);
+  // const { data } = useQuery(GET_BOOKS);
+  const [load, { data }] = useLazyQuery(GET_BOOKS);
 
-  const setMoviesHandle = () => {
-    setMovies((prevMovies) => [
-      ...prevMovies,
-      {
-        ...prevMovies[Math.floor(Math.random() * prevMovies.length)],
-        id: uuidv4(),
-      },
-      {
-        ...prevMovies[Math.floor(Math.random() * prevMovies.length)],
-        id: uuidv4(),
-      },
-      {
-        ...prevMovies[Math.floor(Math.random() * prevMovies.length)],
-        id: uuidv4(),
-      },
-    ]);
-  };
+  console.log({ data });
+
+  const items = data?.products.getMany.data || [];
 
   useEffect(() => {
-    if (inView) setMoviesHandle();
+    if (inView) {
+      load();
+    }
   }, [inView]);
 
   return (
     <div className="list">
       <div className="list__wrapper">
-        {movies.map(({ categoryName, name, price, description, imageUrl, id }) => (
-          <Card
-            key={id}
-            categoryName={categoryName}
-            name={name}
-            price={price}
-            description={description}
-            imageUrl={imageUrl}
-          />
+        {items.map(({ id, name, photo, desc, price, category }) => (
+          <Card key={id} categoryName={category.name} name={name} price={price} description={desc} imageUrl={photo} />
         ))}
       </div>
 
