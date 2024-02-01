@@ -32,6 +32,7 @@ const getClient = async () => {
       variables: { email: VARIABLES.email, password: VARIABLES.password },
     })
     .then(({ data }) => data.profile.signin.token);
+  console.log(token);
 
   const authorization = 'Bearer ' + token;
 

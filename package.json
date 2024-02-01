@@ -58,7 +58,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.9.0",
+    "@apollo/client": "^3.9.2",
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",

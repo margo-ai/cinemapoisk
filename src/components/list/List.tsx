@@ -12,24 +12,24 @@ import Card from '../card/Card';
 import { useInView } from 'react-intersection-observer';
 
 const List = () => {
-  const { ref, inView } = useInView({
-    threshold: 0,
-    trackVisibility: true,
-    delay: 800,
-  });
+  // const { ref, inView } = useInView({
+  //   threshold: 0,
+  //   trackVisibility: true,
+  //   delay: 800,
+  // });
 
-  // const { data } = useQuery(GET_BOOKS);
-  const [load, { data }] = useLazyQuery(GET_BOOKS);
+  // useEffect(() => {
+  //   if (inView) {
+  //     load();
+  //   }
+  // }, [inView]);
+
+  const { data } = useQuery(GET_BOOKS);
+  // const [load, { data }] = useLazyQuery(GET_BOOKS);
 
   console.log({ data });
 
   const items = data?.products.getMany.data || [];
-
-  useEffect(() => {
-    if (inView) {
-      load();
-    }
-  }, [inView]);
 
   return (
     <div className="list">
@@ -39,9 +39,9 @@ const List = () => {
         ))}
       </div>
 
-      <span ref={ref} className="list__load-more">
+      {/* <span ref={ref} className="list__load-more">
         &#8635;
-      </span>
+      </span> */}
     </div>
   );
 };

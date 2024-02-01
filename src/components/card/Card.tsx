@@ -1,17 +1,9 @@
 import React, { PropsWithChildren, memo } from 'react';
 import './card.scss';
-
-interface ICardProps {
-  categoryName: string;
-  name: string;
-  price: number;
-  oldPrice?: number;
-  description: string;
-  imageUrl: string;
-}
+import { ICardProps } from './types';
 
 const Card = memo(({ categoryName, name, price, oldPrice, description, imageUrl }: PropsWithChildren<ICardProps>) => {
-  console.log('Card', name);
+  // console.log('Card', name);
 
   return (
     <div className="card">
