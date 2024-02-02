@@ -1,6 +1,6 @@
 import React from 'react';
 import './logo.scss';
-import LogoSvg from '../../assets/film-movies-icon.svg';
+import LogoSvg from '../../assets/books-icon.svg';
 
 interface ILogoProps {
   size?: 'small' | 'medium' | 'big';
