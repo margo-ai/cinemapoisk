@@ -28,7 +28,7 @@ const CartItem = ({
         <div className="cart-item__content">
           <div className="cart-item__header">
             <div>
-              <span className="cart-item__category">{category.name}</span>
+              <span className="cart-item__category">{category}</span>
               <span>&#32;/&#32;</span>
               <h2 className="cart-item__name">{name}</h2>
             </div>

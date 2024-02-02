@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Logo from './components/logo/Logo';
 import List from './components/list/List';
 import { client } from './graphql/client';
+import CartButton from './components/cart/cart-button/CartButton';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
             <Logo />
           </Header>
           <main className="main">
-            <List />
+            {/* <List /> */}
+            <CartButton />
           </main>
         </Layout>
       </div>

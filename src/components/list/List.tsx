@@ -35,7 +35,7 @@ const List = () => {
     <div className="list">
       <div className="list__wrapper">
         {items.map(({ id, name, photo, desc, price, category }) => (
-          <Card key={id} categoryName={category.name} name={name} price={price} description={desc} imageUrl={photo} />
+          <Card key={id} categoryName={category.name} name={name} price={price} desc={desc} photo={photo} />
         ))}
       </div>
 
