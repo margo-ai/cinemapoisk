@@ -2,7 +2,7 @@ import React, { PropsWithChildren, memo } from 'react';
 import './card.scss';
 import { ICardProps } from './types';
 
-const Card = memo(({ categoryName, name, price, desc, photo }: PropsWithChildren<ICardProps>) => {
+const Card = memo(({ category, name, price, desc, photo }: PropsWithChildren<ICardProps>) => {
   // console.log('Card', name);
 
   return (
@@ -12,7 +12,7 @@ const Card = memo(({ categoryName, name, price, desc, photo }: PropsWithChildren
           <img src={photo} alt={name} className="card__image" />
         </div>
         <div className="card__content">
-          <span className="card__category">{categoryName}</span>
+          <span className="card__category">{category.name}</span>
           <h2 className="card__name">{name}</h2>
           <p className="card__description">{desc}</p>
           <div className="card__footer">

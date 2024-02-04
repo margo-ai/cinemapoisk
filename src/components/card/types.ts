@@ -1,11 +1,11 @@
 // import type { TCategory } from '../cart/cart-item/types';
 
 export interface ICardProps {
-  categoryName: string;
+  category: { name: string };
   name: string;
   price: number;
-  desc: string;
-  photo: string;
+  desc?: string;
+  photo?: string;
   id?: string;
 }
 

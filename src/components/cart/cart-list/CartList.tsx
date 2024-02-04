@@ -38,13 +38,13 @@ const CartList = ({ cartBooks, removeItemHandler }: PropsWithChildren<ICartListP
       <StyledItemListWrapper>
         {cartBooks?.length
           ? cartBooks.map(
-              ({ categoryName, name, price, desc, photo, id, count }) =>
+              ({ category, name, price, desc, photo, id, count }) =>
                 count > 0 && (
                   <CartItem
                     key={id}
                     id={id}
                     type="default"
-                    category={categoryName}
+                    category={category.name}
                     name={name}
                     price={price}
                     desc={desc}
