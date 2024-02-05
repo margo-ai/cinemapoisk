@@ -16,7 +16,7 @@ import Button from '../button/Button';
 import { useInView } from 'react-intersection-observer';
 import { TListProps } from './types';
 import { useTypedDispatch } from '../../store';
-import { cartAddItem } from '../../redux/cartReducer';
+import { cartAddItem } from 'src/redux/cartReducer';
 
 const List = ({ profile }: TListProps) => {
   const dispatch = useTypedDispatch();

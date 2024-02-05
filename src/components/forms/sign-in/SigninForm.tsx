@@ -28,7 +28,7 @@ const schema: yup.ObjectSchema<Inputs> = yup
   })
   .required();
 
-const SignupForm = ({ onSubmitHandler, errorMessage }: PropsWithChildren<ISigninForm>) => {
+const SigninForm = ({ onSubmitHandler, errorMessage }: PropsWithChildren<ISigninForm>) => {
   const {
     handleSubmit,
     reset,
@@ -74,4 +74,4 @@ const SignupForm = ({ onSubmitHandler, errorMessage }: PropsWithChildren<ISignin
   );
 };
 
-export default SignupForm;
+export default SigninForm;

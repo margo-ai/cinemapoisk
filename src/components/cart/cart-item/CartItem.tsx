@@ -37,12 +37,10 @@ const CartItem = ({
             </Button>
           </div>
         </div>
-        <p className="cart-item__description">{desc}</p>
+        {/* <p className="cart-item__description">{desc}</p> */}
         <div className="cart-item__footer">
           <div className="cart-item__price__wrapper">
-            <div className="cart-item__price">
-              {!count ? '' : `${count} x `}`{price}&#32;руб.`
-            </div>
+            <div className="cart-item__price">{!count ? '' : `${count} x ${price} руб.`}</div>
           </div>
         </div>
       </div>

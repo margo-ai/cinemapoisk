@@ -1,5 +1,37 @@
+// .app {
+//   min-height: 100vh;
+// }
+
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &--header {
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 2em;
+
+      &-icons {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+      }
+
+      &-icon {
+        height: 24px;
+        color: #222;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
 }
 
 .main {
