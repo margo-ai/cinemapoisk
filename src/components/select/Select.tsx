@@ -28,8 +28,9 @@ const StyledCustomSelect = styled.div<PropsWithChildren<IStyledCustomSelectProps
 
 const StyledCustomSelectOptions = styled.div`
   position: absolute;
-  z-index: 100;
+  z-index: 999;
   width: 280px;
+  color: #222;
 `;
 
 const StyledCustomSelectOptionsList = styled.ul`
@@ -179,7 +180,9 @@ const CustomSelect = forwardRef(
                     className={`select__options-list_item ${selectOption?.value === item.value ? 'active' : ''}`}
                     key={item.value}
                     onClick={() => clickOption(item.value)}
-                  ></StyledCustomSelectOptionsListItem>
+                  >
+                    {item.name}
+                  </StyledCustomSelectOptionsListItem>
                 ))
               ) : (
                 <StyledCustomSelectOptionsListItem className="select__options-list_item empty text-center">

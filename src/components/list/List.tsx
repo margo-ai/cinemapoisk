@@ -47,12 +47,21 @@ const List = ({ profile }: TListProps) => {
   return (
     <div className="list">
       <ModalWrapper actionNode={<Button>{'Добавить товар'}</Button>}>
-        {/* {({ hide }) => <AddEditForm onSuccessSubmit={hide} />} */}
-        {<AddEditForm />}
+        {({ hide }) => <AddEditForm onSuccessSubmit={hide} />}
       </ModalWrapper>
       <div className="list__wrapper">
         {items.map(({ id, name, photo, desc, price, category }) => (
-          <Card key={id} category={category} name={name} price={price} desc={desc} photo={photo} />
+          <Card
+            key={id}
+            id={id}
+            category={category}
+            name={name}
+            price={price}
+            desc={desc}
+            photo={photo}
+            type="default"
+            addToCartHandler={addToCartHandler}
+          />
         ))}
       </div>
 

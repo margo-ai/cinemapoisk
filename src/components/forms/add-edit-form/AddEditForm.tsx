@@ -1,6 +1,5 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { withTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 

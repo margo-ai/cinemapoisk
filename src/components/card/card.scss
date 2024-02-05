@@ -15,11 +15,22 @@
     transform: scale(1.1);
   }
 
+  &--disabled {
+    color: #b2b7c2;
+    background: #e1e4eb;
+    box-shadow: unset;
+    cursor: default;
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &--disabled &-image__wrapper {
+    opacity: 0.4;
   }
   &-image__wrapper {
     max-height: 420px;
@@ -55,15 +66,30 @@
     overflow: hidden;
   }
 
-  &-price_new {
+  &__price {
+    color: #fff;
     font-weight: 700;
     text-align: end;
   }
-  &-price_old {
-    font-weight: 700;
-    font-size: 12px;
-    color: grey;
-    text-decoration: line-through;
-    text-align: end;
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__edit-icon {
+    height: 24px;
+    color: #fff;
+    transition: opacity 0.5s ease;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }

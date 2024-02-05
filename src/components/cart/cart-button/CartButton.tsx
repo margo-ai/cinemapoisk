@@ -2,8 +2,8 @@ import React, { PropsWithChildren, useState } from 'react';
 
 import './cart-button.scss';
 
-// import AddIcon from '@mui/icons-material/Add';
-// import RemoveIcon from '@mui/icons-material/Remove';
+import { PlusIcon } from '@heroicons/react/24/solid';
+import { MinusIcon } from '@heroicons/react/24/solid';
 
 import { ICartButtonProps, TAction } from './types';
 import Button from '../../button/Button';
@@ -46,11 +46,13 @@ const CartButton = ({
   return value ? (
     <div className="cart-button__counter">
       <Button icon={true} onClick={() => handleOnClick('decrease')}>
-        <span style={{ fontSize: 25, verticalAlign: 'middle' }}>-</span>
+        {/* <span style={{ fontSize: 25, verticalAlign: 'middle' }}>-</span> */}
+        <MinusIcon />
       </Button>
       <input onChange={handleInputChange} className="cart-button__input" value={value} min={0} max={10}></input>
       <Button icon={true} onClick={() => handleOnClick('increase')}>
-        <span style={{ fontSize: 25, verticalAlign: 'middle' }}>+</span>
+        {/* <span style={{ fontSize: 25, verticalAlign: 'middle' }}>+</span> */}
+        <PlusIcon />
       </Button>
     </div>
   ) : (

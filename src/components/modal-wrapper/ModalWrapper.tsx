@@ -5,7 +5,7 @@ import Modal from '../modal/Modal';
 
 import { IModalWrapperProps } from './types';
 
-const ModalWrapper = ({ actionNode, children }: PropsWithChildren<IModalWrapperProps>) => {
+const ModalWrapper = ({ actionNode, children }: IModalWrapperProps) => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => setShowModal(true);
