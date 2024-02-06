@@ -60,7 +60,6 @@ const List = ({ profile }: TListProps) => {
             price={price}
             desc={desc}
             photo={photo}
-            type="default"
             addToCartHandler={addToCartHandler}
           />
         ))}

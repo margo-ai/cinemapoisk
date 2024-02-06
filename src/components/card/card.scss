@@ -6,6 +6,7 @@
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease;
   cursor: pointer;
+  display: flex;
 
   &:hover {
     box-shadow: none;
@@ -26,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
   }
 
   &--disabled &-image__wrapper {
@@ -36,17 +37,12 @@
     max-height: 420px;
     overflow: hidden;
     border-radius: 2px;
+    margin-bottom: 1.5em;
 
     .card__image {
       width: 100%;
       transition: transform 1.2s ease;
     }
-  }
-
-  &__content {
-    width: calc(100% - 2em);
-    padding: 1em;
-    user-select: none;
   }
 
   &__category {
@@ -76,6 +72,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
+  }
+
+  &__content,
+  &__footer {
+    width: calc(100% - 2em);
+    padding: 1em;
+    user-select: none;
   }
 
   &__buttons {

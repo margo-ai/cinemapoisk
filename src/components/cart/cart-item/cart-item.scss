@@ -1,5 +1,5 @@
 .cart-item {
-  width: fit-content;
+  width: 70%;
   background: var(--active-color);
   padding: 1em;
   color: var(--main-font-color);
@@ -23,7 +23,7 @@
   }
 
   &__images {
-    height: 8em;
+    height: 16em;
     display: grid;
     gap: 0.6em;
     grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));

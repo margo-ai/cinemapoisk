@@ -10,7 +10,6 @@ export interface ICardProps {
   updateList?: () => void;
   addToCartHandler?: (id: string, count: number) => void;
   count?: number;
-  type?: 'default' | 'disabled';
 }
 
 export interface ICartListProps {
