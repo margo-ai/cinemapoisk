@@ -10,6 +10,8 @@ import Input from '../../input/Input';
 import Select from '../../select/Select';
 
 import { FormStyled, FormItemStyled, FormErrorStyled } from '../forms-styled-components';
+import { useQuery } from '@apollo/client';
+import { GET_CATEGORIES } from 'src/graphql/queries/getCategories';
 
 /** Graphql */
 
@@ -69,11 +71,23 @@ const AddEditForm = ({ cardData, updateList, onSuccessSubmit }: IAddEditForm) =>
     reset();
   };
 
-  const categories = [
-    { value: 'classica', name: 'Зарубежная классика' },
-    { value: 'manga', name: 'Манга' },
-    { value: 'classica', name: 'Зарубежная классика' },
-  ];
+  const { data } = useQuery(GET_CATEGORIES);
+
+  const result = data?.categories.getMany.data || [];
+  const categories = result.map((item) => {
+    return { value: item.name, name: item.name };
+  });
+  console.log(categories);
+
+  useEffect(() => {
+    if (!cardData) return;
+    type TKeys = 'category' | 'name' | 'price' | 'desc' | 'photo';
+
+    Object.keys(cardData).forEach((key) => {
+      const uKey = cardData[key as TKeys];
+      setValue(key as TKeys, typeof uKey === 'object' ? uKey.name : uKey);
+    });
+  }, [cardData]);
 
   return (
     <FormStyled onSubmit={handleSubmit(onSubmit)}>

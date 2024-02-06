@@ -4,6 +4,7 @@ import './list.scss';
 
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { GET_BOOKS } from '../../graphql/queries/getBooks';
+import { GET_CATEGORIES } from '../../graphql/queries/getCategories';
 
 // import { movies as moviesData } from 'src/api/movies';
 // import { books as booksData } from 'src/api/books.mjs';

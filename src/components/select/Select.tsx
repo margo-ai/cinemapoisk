@@ -104,6 +104,8 @@ const CustomSelect = forwardRef(
     }: ICustomSelectProps,
     ref
   ) => {
+    console.log(items);
+
     const [selectItems, setSelectItems] = useState<TCustomItem[]>(items);
     const [selectValue, setSelectValue] = useState<TCustomValue>('');
     const [selectOption, setSelectOption] = useState<TCustomItem | null>(null);

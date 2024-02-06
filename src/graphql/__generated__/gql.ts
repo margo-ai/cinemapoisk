@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  mutation SignIn($email: String!, $password: String!) {\n    profile {\n      signin(email: $email, password: $password) {\n        token\n      }\n    }\n  }\n": types.SignInDocument,
     "\n  query GetBooks {\n    products {\n      getMany(input: {}) {\n        data {\n          id\n          name\n          photo\n          desc\n          price\n          category {\n            name\n          }\n        }\n      }\n    }\n  }\n": types.GetBooksDocument,
+    "\n  query GetCategories {\n    categories {\n      getMany {\n          data {\n          name\n        }\n      }\n    }\n  }\n": types.GetCategoriesDocument,
 };
 
 /**
@@ -39,6 +40,10 @@ export function gql(source: "\n  mutation SignIn($email: String!, $password: Str
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query GetBooks {\n    products {\n      getMany(input: {}) {\n        data {\n          id\n          name\n          photo\n          desc\n          price\n          category {\n            name\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetBooks {\n    products {\n      getMany(input: {}) {\n        data {\n          id\n          name\n          photo\n          desc\n          price\n          category {\n            name\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetCategories {\n    categories {\n      getMany {\n          data {\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCategories {\n    categories {\n      getMany {\n          data {\n          name\n        }\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
