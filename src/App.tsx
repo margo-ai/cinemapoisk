@@ -7,13 +7,14 @@ import HomePage from './pages/home/HomePage';
 import ListPage from './pages/list/ListPage';
 import CartPage from './pages/cart/CartPage';
 import LoginPage from './pages/login/LoginPage';
+import ProfilePage from './pages/profile/ProfilePage';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}>
         <Route index element={<ListPage />} />
-        {/* <Route path="profile" element={<>A</>} /> */}
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="login" element={<LoginPage />} />
       </Route>

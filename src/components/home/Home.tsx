@@ -9,20 +9,16 @@ import Logo from '../logo/Logo';
 import Button from '../button/Button';
 import Navigation from '../navigation/Navigation';
 
+import './home.scss';
+
 /** Icons */
 import { ShoppingBagIcon, ArrowLeftEndOnRectangleIcon, UserIcon } from '@heroicons/react/24/solid';
-
-// const StyledAvatar = styled.b`
-//   padding: 5.5px 4.5px;
-//   border-radius: 50%;
-//   border: 2px solid #222;
-// `;
 
 const Home = () => {
   return (
     <Layout>
       <Header>
-        <NavLink to={'/'}>
+        <NavLink to={'/'} className="nav">
           <Logo />
         </NavLink>
         <Navigation />

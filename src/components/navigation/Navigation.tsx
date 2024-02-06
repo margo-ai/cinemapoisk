@@ -7,9 +7,12 @@ const StyledNavigation = styled.nav`
   gap: 1.5em;
   align-items: center;
   color: #222;
+  font-weight: 700;
+  font-size: 18px;
 
   .nav__link {
     transition: opacity 0.5s ease;
+    color: #222;
     &:hover {
       opacity: 0.6;
     }

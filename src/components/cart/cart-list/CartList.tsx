@@ -54,7 +54,7 @@ const CartList = ({ cartBooks, removeItemHandler }: PropsWithChildren<ICartListP
                   />
                 )
             )
-          : 'Вы ещё не добавили книгу'}
+          : 'Вы ещё не добавили книг'}
       </StyledItemListWrapper>
       <StyledCartListFooter>
         <div>{`Итого: ${orderSum}`}</div>

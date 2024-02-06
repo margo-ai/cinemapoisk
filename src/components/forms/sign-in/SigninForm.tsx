@@ -6,7 +6,7 @@ import { useTranslation, withTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 /** Components */
-import Input from 'src/components/input/Input';
+import Input from '../../input/Input';
 
 /** Styled Components */
 import { FormStyled, FormItemStyled, FormErrorStyled } from '../forms-styled-components';
@@ -52,24 +52,21 @@ const SigninForm = ({ onSubmitHandler, errorMessage }: PropsWithChildren<ISignin
         <Controller
           name="email"
           control={control}
-          render={({ field }) => <Input id="form-login--email" placeholder="Электронная почта" {...field} />}
+          render={({ field }) => <Input placeholder="Электронная почта" {...field} />}
         />
-        {errors.email && <FormErrorStyled className="form--error">{errors.email?.message}</FormErrorStyled>}
+        {errors.email && <FormErrorStyled className="form__error">{errors.email?.message}</FormErrorStyled>}
       </FormItemStyled>
 
       <FormItemStyled className="form__item">
         <Controller
           name="password"
           control={control}
-          render={({ field }) => <Input id="form-login--passwrd" type="password" placeholder="Пароль" {...field} />}
+          render={({ field }) => <Input placeholder="Пароль" {...field} />}
         />
-        {errors.password && <FormErrorStyled className="form--error">{errors.password?.message}</FormErrorStyled>}
-        {errorMessage && <FormErrorStyled className="form--error">{errorMessage}</FormErrorStyled>}
+        {errors.password && <FormErrorStyled className="form__error">{errors.password?.message}</FormErrorStyled>}
       </FormItemStyled>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <input className="button button--primary button--medium" type="submit" value="Войти" />
-      </div>
+      <input className="button button--primary button--medium" type="submit" value="Войти" />
     </FormStyled>
   );
 };

@@ -17,7 +17,7 @@ const StyledInput = styled.input<{ $type: string; $size: string }>`
   background: transparent;
   border: 1px solid var(--active-color);
   border-radius: 2px;
-  color: grey;
+  color: #222;
   max-width: 280px;
   font-size: ${({ $size }) => {
     if ($size === 'small') return '12px';

@@ -1,12 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
-import { withTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { FormStyled, FormItemStyled, FormErrorStyled } from '../forms-styled-components';
 
-import Input from 'src/components/input/Input';
+import Input from '../../input/Input';
 
 import { Inputs } from './types';
 
