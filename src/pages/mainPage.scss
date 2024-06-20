@@ -1,0 +1,19 @@
+.main-page-wrapper {
+  display: grid;
+  grid-template-columns: 400px auto;
+}
+
+.form {
+  width: 300px;
+  position: sticky;
+  top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.buttons-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

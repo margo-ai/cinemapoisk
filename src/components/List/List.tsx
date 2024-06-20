@@ -18,7 +18,7 @@ export const List = ({ children, currentPage, setCurrentPage }: Props) => {
   console.log(currentPage);
 
   return (
-    <>
+    <div>
       <ul className="list">{children}</ul>
       <Pagination
         style={{ display: "flex", justifyContent: "center" }}
@@ -26,6 +26,6 @@ export const List = ({ children, currentPage, setCurrentPage }: Props) => {
         page={currentPage}
         onChange={(_, number) => setCurrentPage(number)}
       />
-    </>
+    </div>
   );
 };

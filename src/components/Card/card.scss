@@ -5,7 +5,11 @@
   padding: 10px;
   border-radius: 10px;
 
-  display: flex;
+  a {
+    display: flex;
+    justify-content: space-between;
+    min-height: 100%;
+  }
 
   &__info {
     // flex-grow: 1;
@@ -30,8 +34,9 @@
   &__title {
     margin-top: 12px;
     font-size: 16px;
+    line-height: 20px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   &__year {

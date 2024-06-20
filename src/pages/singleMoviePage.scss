@@ -1,0 +1,54 @@
+.single-movie-page-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 85, 0, 0.05);
+}
+
+.movie-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image {
+  width: 400px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+
+  &__name-and-year {
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__genres {
+    margin-top: auto;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &__rating {
+    font-weight: 700;
+    font-size: 16px;
+  }
+}
+
+.back-button {
+  width: 200px;
+  margin-bottom: 40px;
+  margin-right: 12px;
+  margin-left: auto;
+}

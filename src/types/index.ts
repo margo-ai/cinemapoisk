@@ -1,4 +1,4 @@
-type TGenre = { name: string };
+export type TGenre = { name: string };
 
 export type TKinopoisk = {
   ageRating: number;
@@ -61,4 +61,5 @@ export type TState = {
   pagesCount: number;
   moviesLoadingStatus: string;
   genres: string[];
+  selectedMovie: TMovies;
 };

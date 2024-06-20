@@ -9,14 +9,26 @@ const initialState: TState = {
   pagesCount: 0,
   moviesLoadingStatus: "idle",
   genres: [],
+  selectedMovie: null,
 };
 
 const _url = "https://api.kinopoisk.dev/v1.4/movie?limit=50";
 
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
-  async ({ page, rating, genresString }: { page: number; rating: number[]; genresString: string }) => {
-    let url = `${_url}&page=${page}&rating.kp=${rating[0]}-${rating[1]}${genresString}`;
+  async ({
+    page,
+    rating,
+    years,
+    genresString,
+  }: {
+    page: number;
+    rating: number[];
+    years: number[];
+    genresString: string;
+  }) => {
+    let url = `${_url}&page=${page}&rating.kp=${rating[0]}-${rating[1]}&year=${years[0]}-${years[1]}${genresString}`;
+    console.log(url);
 
     const response = await fetch(url, {
       method: "GET",
@@ -41,6 +53,9 @@ const moviesSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    setSelectedMovie: (state, action) => {
+      state.selectedMovie = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -63,6 +78,6 @@ const moviesSlice = createSlice({
 });
 
 const { actions, reducer } = moviesSlice;
-export const { setCurrentPage } = actions;
+export const { setCurrentPage, setSelectedMovie } = actions;
 
 export default reducer;
