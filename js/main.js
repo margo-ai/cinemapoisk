@@ -30966,7 +30966,7 @@ var SingleMoviePage = function SingleMoviePage() {
   });
   var getGenresString = function getGenresString(genres) {
     var genresArray = [];
-    for (var i = 0; i < genres.length; i++) {
+    for (var i = 0; i < (genres === null || genres === void 0 ? void 0 : genres.length); i++) {
       genresArray.push(genres[i]["name"]);
     }
     return genresArray.join(", ");
