@@ -1,10 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react";
-
 import { Pagination } from "@mui/material";
 
-import "./list.scss";
 import { useAppSelector } from "../../helpers/hooks";
-// import { setCurrentPage } from "src/reducers/moviesSlice";
+
+import "./list.scss";
 
 type Props = {
   children: React.ReactNode;
@@ -13,9 +12,7 @@ type Props = {
 };
 
 export const List = ({ children, currentPage, setCurrentPage }: Props) => {
-  // const currentPage = useAppSelector((state) => state.movies.currentPage);
   const pagesCount = useAppSelector((state) => state.movies.pagesCount);
-  console.log(currentPage);
 
   return (
     <div>

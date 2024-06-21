@@ -3,13 +3,26 @@
   grid-template-columns: 400px auto;
 }
 
-.form {
-  width: 300px;
+.forms {
   position: sticky;
   top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+
+  &__filter-form {
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    margin-bottom: 50px;
+  }
+
+  &__search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+  }
 }
 
 .buttons-block {

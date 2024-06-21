@@ -13,7 +13,7 @@ export const Card = ({ id, name, alternativeName, poster, year, rating }: TMovie
   const movies = useAppSelector((state) => state.movies.movies);
 
   const handleMovie = (movieId: number) => {
-    const movie = movies.find((item) => item.id === id);
+    const movie = movies.find((item) => item.id === movieId);
     dispatch(setSelectedMovie(movie));
   };
 

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TState } from "../types/index";
 
 import { _transformData, getGenres } from "../utils/utils";
@@ -12,7 +12,8 @@ const initialState: TState = {
   selectedMovie: null,
 };
 
-const _url = "https://api.kinopoisk.dev/v1.4/movie?limit=50";
+const _filterUrl = "https://api.kinopoisk.dev/v1.4/movie?limit=50";
+const _searchUrl = "https://api.kinopoisk.dev/v1.4/movie/search?limit=50";
 
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMovies",
@@ -21,14 +22,17 @@ export const fetchMovies = createAsyncThunk(
     rating,
     years,
     genresString,
+    searchName,
   }: {
     page: number;
-    rating: number[];
-    years: number[];
-    genresString: string;
+    rating?: number[];
+    years?: number[];
+    genresString?: string;
+    searchName?: string;
   }) => {
-    let url = `${_url}&page=${page}&rating.kp=${rating[0]}-${rating[1]}&year=${years[0]}-${years[1]}${genresString}`;
-    console.log(url);
+    let url = !!searchName
+      ? `${_searchUrl}&page=${page}&query=${searchName}`
+      : `${_filterUrl}&page=${page}&rating.kp=${rating[0]}-${rating[1]}&year=${years[0]}-${years[1]}${genresString}`;
 
     const response = await fetch(url, {
       method: "GET",
@@ -37,7 +41,6 @@ export const fetchMovies = createAsyncThunk(
       },
     });
     const data = await response.json();
-    console.log(data);
 
     const transformedData = data.docs.map(_transformData);
     const genres = getGenres(transformedData);

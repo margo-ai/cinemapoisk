@@ -4,9 +4,8 @@ import { List } from "../components/List";
 import { Card } from "../components/Card";
 
 import { useAppDispatch, useAppSelector } from "../helpers/hooks";
-import { fetchMovies } from "../reducers/moviesSlice";
-
 import { _transformData, checkImageUrl } from "../utils/utils";
+import { fetchMovies } from "../reducers/moviesSlice";
 
 import { CircularProgress } from "@mui/material";
 import Slider from "@mui/material/Slider";
@@ -16,14 +15,25 @@ import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 import "./mainPage.scss";
+
+const getStringGenres = (array: string[]) => {
+  let genresString = "";
+  if (array.length === 0) {
+    genresString = "";
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      genresString += `&genres.name=%2B${array[i]}`;
+    }
+  }
+  return genresString;
+};
 
 export const MainPage = () => {
   const dispatch = useAppDispatch();
 
-  // const currentPage = useAppSelector((state) => state.movies.currentPage);
-  // const pagesCount = useAppSelector((state) => state.movies.pagesCount);
   const movies = useAppSelector((state) => state.movies.movies);
   const moviesLoadingStatus = useAppSelector((state) => state.movies.moviesLoadingStatus);
   const genres = useAppSelector((state) => state.movies.genres);
@@ -32,15 +42,19 @@ export const MainPage = () => {
   const [ratingValue, setRatingValue] = useState([0, 10]);
   const [yearValue, setYearValue] = useState([1990, 2024]);
   const [genresValue, setGenresValue] = useState([]);
+  const [searchName, setSearchName] = useState("");
 
   useEffect(() => {
-    dispatch(fetchMovies({ page: currentPage, rating: ratingValue, years: yearValue, genresString: "" }));
+    dispatch(
+      fetchMovies({
+        page: currentPage,
+        rating: ratingValue,
+        years: yearValue,
+        genresString: getStringGenres(genresValue),
+        searchName: searchName.replace(/ /g, "%20"),
+      }),
+    );
   }, [currentPage]);
-  // console.log(genres);
-
-  // console.log(ratingValue);
-  // console.log(yearValue);
-  // console.log(genresValue);
 
   const ratingValueText = (value: number) => {
     return `Оценка ${value}`;
@@ -65,84 +79,117 @@ export const MainPage = () => {
     setGenresValue(typeof value === "string" ? value.split(",") : value);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmitFilters = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    let genresString = "";
-    if (genresValue.length === 0) {
-      genresString = "";
-    } else {
-      for (let i = 0; i < genresValue.length; i++) {
-        console.log(genresValue[i]);
-        genresString += `&genres.name=%2B${genresValue[i]}`;
-      }
-    }
-    // console.log(genresString);
 
-    dispatch(fetchMovies({ page: currentPage, rating: ratingValue, years: yearValue, genresString: genresString }));
+    dispatch(
+      fetchMovies({
+        page: currentPage,
+        rating: ratingValue,
+        years: yearValue,
+        genresString: getStringGenres(genresValue),
+      }),
+    );
   };
 
-  const onReset = () => {
+  const handleSubmitSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    dispatch(fetchMovies({ page: currentPage, searchName: searchName.replace(/ /g, "%20") }));
+  };
+
+  const onResetFilters = () => {
     setCurrentPage(1);
     setRatingValue([0, 10]);
     setYearValue([1990, 2024]);
     setGenresValue([]);
     dispatch(fetchMovies({ page: 1, rating: [0, 10], years: [1990, 2024], genresString: "" }));
   };
+
+  const onResetSearch = () => {
+    setSearchName("");
+
+    dispatch(
+      fetchMovies({
+        page: currentPage,
+        rating: ratingValue,
+        years: yearValue,
+        genresString: getStringGenres(genresValue),
+        searchName: "",
+      }),
+    );
+  };
+
   return (
     <div className="main-page-wrapper">
       <div style={{ padding: "10px 20px" }}>
-        <form className="form" onSubmit={handleSubmit}>
-          <FormControl>
-            <InputLabel id="rating-range">Рейтинг:</InputLabel>
-            <Slider
-              value={ratingValue}
-              getAriaValueText={ratingValueText}
-              onChange={handleChangeRating}
-              max={10}
-              valueLabelDisplay="auto"
-              aria-labelledby="rating-range"
+        <div className="forms">
+          <form className="forms__filter-form" onSubmit={handleSubmitFilters}>
+            <FormControl>
+              <InputLabel id="rating-range">Рейтинг:</InputLabel>
+              <Slider
+                value={ratingValue}
+                getAriaValueText={ratingValueText}
+                onChange={handleChangeRating}
+                max={10}
+                valueLabelDisplay="auto"
+                aria-labelledby="rating-range"
+              />
+            </FormControl>
+
+            <FormControl>
+              <InputLabel id="year-range">Год выхода:</InputLabel>
+              <Slider
+                value={yearValue}
+                getAriaValueText={yearValueText}
+                onChange={handleChangeYear}
+                min={1990}
+                max={2024}
+                valueLabelDisplay="auto"
+                aria-labelledby="year-range"
+              />
+            </FormControl>
+
+            <FormControl>
+              <InputLabel id="genres-select">Жанры:</InputLabel>
+              <Select
+                labelId="genres-select"
+                multiple
+                value={genresValue}
+                onChange={handleChangeGenre}
+                input={<OutlinedInput label="Жанры:" />}
+              >
+                {genres.map((genre) => (
+                  <MenuItem key={genre} value={genre}>
+                    {genre}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <div className="buttons-block">
+              <Button type="submit" variant="contained">
+                Применить
+              </Button>
+              <Button type="button" onClick={onResetFilters}>
+                Сбросить фильтры
+              </Button>
+            </div>
+          </form>
+          <form className="forms__search-form" onSubmit={handleSubmitSearch}>
+            <TextField
+              label="Название фильма"
+              variant="outlined"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
             />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel id="year-range">Год выхода:</InputLabel>
-            <Slider
-              value={yearValue}
-              getAriaValueText={yearValueText}
-              onChange={handleChangeYear}
-              min={1990}
-              max={2024}
-              valueLabelDisplay="auto"
-              aria-labelledby="year-range"
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel id="genres-select">Жанры:</InputLabel>
-            <Select
-              labelId="genres-select"
-              multiple
-              value={genresValue}
-              onChange={handleChangeGenre}
-              input={<OutlinedInput label="Жанры:" />}
-            >
-              {genres.map((genre) => (
-                <MenuItem key={genre} value={genre}>
-                  {genre}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <div className="buttons-block">
             <Button type="submit" variant="contained">
               Найти
             </Button>
-            <Button type="button" onClick={onReset}>
-              Сбросить фильтры
+            <Button type="button" onClick={onResetSearch}>
+              Очистить
             </Button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
       {moviesLoadingStatus === "loading" ? (

@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .card {
   background-color: rgba(255, 85, 0, 0.05);
 
@@ -12,7 +14,6 @@
   }
 
   &__info {
-    // flex-grow: 1;
     width: 50%;
   }
   &__image {
@@ -35,8 +36,8 @@
     margin-top: 12px;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 700;
     margin-bottom: 15px;
+    @include roboto-bold;
   }
 
   &__year {

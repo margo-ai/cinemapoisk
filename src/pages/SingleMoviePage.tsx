@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import "./singleMoviePage.scss";
-
-import { useAppDispatch, useAppSelector } from "../helpers/hooks";
-
 import Button from "@mui/material/Button";
 
+import { useAppSelector } from "../helpers/hooks";
+
+import "./singleMoviePage.scss";
 import { TGenre } from "../types/index";
 
 export const SingleMoviePage = () => {
