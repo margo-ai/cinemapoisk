@@ -22144,7 +22144,7 @@ var Card = function Card(_ref) {
     key: id,
     className: "card"
   }, /*#__PURE__*/react.createElement(Link, {
-    to: "/".concat(id),
+    to: "/cinemapoisk/".concat(id),
     onClick: function onClick() {
       return handleMovie(id);
     }
