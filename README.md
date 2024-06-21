@@ -17,6 +17,10 @@
 npm run start
 ```
 
+### Демо приложения
+
+[Cinemapoisk](https://margo-ai.github.io/cinemapoisk/)
+
 ### Главная страница
 
 <!--![Characters list](./screenshots/screenshot1.jpg)   -->

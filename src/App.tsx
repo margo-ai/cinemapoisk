@@ -14,8 +14,8 @@ export const App = () => {
         <Header>Cinemapoisk</Header>
         <main>
           <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/:movieId" element={<SingleMoviePage />} />
+            <Route path="/cinemapoisk" element={<MainPage />} />
+            <Route path="/cinemapoisk/:movieId" element={<SingleMoviePage />} />
             <Route path="*" element={<MainPage />} />
           </Routes>
         </main>

@@ -19,7 +19,7 @@ export const Card = ({ id, name, alternativeName, poster, year, rating }: TMovie
 
   return (
     <li key={id} className="card">
-      <Link to={`/${id}`} onClick={() => handleMovie(id)}>
+      <Link to={`/cinemapoisk/${id}`} onClick={() => handleMovie(id)}>
         <div className="card__image">
           <img src={poster} alt="Movie image" />
         </div>
