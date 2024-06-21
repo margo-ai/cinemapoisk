@@ -31012,10 +31012,10 @@ var SingleMoviePage = function SingleMoviePage() {
 
 var App = function App() {
   return /*#__PURE__*/react.createElement(Container, null, /*#__PURE__*/react.createElement(BrowserRouter, null, /*#__PURE__*/react.createElement(Header, null, "Cinemapoisk"), /*#__PURE__*/react.createElement("main", null, /*#__PURE__*/react.createElement(Routes, null, /*#__PURE__*/react.createElement(Route, {
-    path: "/",
+    path: "/cinemapoisk",
     element: /*#__PURE__*/react.createElement(MainPage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/:movieId",
+    path: "/cinemapoisk/:movieId",
     element: /*#__PURE__*/react.createElement(SingleMoviePage, null)
   }), /*#__PURE__*/react.createElement(Route, {
     path: "*",
